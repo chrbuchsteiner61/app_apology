@@ -93,7 +93,7 @@ class ApologyPage extends StatelessWidget {
                     style: formatP,
                   ),
                 ),
-                pw.SizedBox(width: 200, height: 200),
+                pw.SizedBox(width: 200, height: 120),
                 pw.Container(
                   alignment: pw.Alignment.centerRight,
                   child: pw.Text(

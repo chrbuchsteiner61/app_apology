@@ -81,7 +81,7 @@ class _StartingPageState extends State<StartingPage> {
     allElements['teacher'] = "Frau Brendel";
 
     allElements['titleRow'] = "Entschuldigung";
-    allElements['salutation'] = "Sehr geehrte Frau";
+    allElements['salutation'] = "Sehr geehrte";
     allElements['reasonTextPart1'] = "unser Sohn";
     allElements['reasonTextPart2'] =
     "war krank und konnte nicht am Unterricht teilnehmen.";

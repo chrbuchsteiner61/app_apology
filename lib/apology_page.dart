@@ -33,10 +33,10 @@ class ApologyPage extends StatelessWidget {
   Future<Uint8List> generatePdf(Map<String, String> allElements) async {
     // text formats
     pw.TextStyle formatH2 = const pw.TextStyle(
-      fontSize: 14,
+      fontSize: 13.0,
     );
     pw.TextStyle formatH3 = const pw.TextStyle(
-      fontSize: 13,
+      fontSize: 12.0,
     );
     pw.TextStyle formatB = pw.TextStyle(
       fontSize: 12.0,
@@ -103,6 +103,7 @@ class ApologyPage extends StatelessWidget {
                 ),
                 pw.Container(
                   alignment: pw.Alignment.centerLeft,
+                  height: 18.0,
                   child: pw.Text(
                     '${allElements['titleRow']!} ${allElements['appologyDate']!}',
                     style: formatB,
@@ -116,8 +117,8 @@ class ApologyPage extends StatelessWidget {
                     style: formatP,
                   ),
                 ),
-                pw.SizedBox(height: distance),
                 pw.Container(
+                  height: 24.0,
                   alignment: pw.Alignment.centerLeft,
                   child: pw.Text(
                     '${allElements['reasonTextPart1']!} ${allElements['childName']!} ${allElements['reasonTextPart2']!}',
@@ -125,15 +126,17 @@ class ApologyPage extends StatelessWidget {
                   ),
                 ),
                 pw.Container(
+                  height: 18.0,
                   alignment: pw.Alignment.centerLeft,
                   child: pw.Text(
                     allElements['pleaseExcuse']!,
                     style: formatP,
                   ),
                 ),
-                pw.SizedBox(height: distance),
+
                 pw.Container(
                   alignment: pw.Alignment.centerLeft,
+                  height: 30.0,
                   child: pw.Text(
                     allElements['endOfLetter']!,
                     style: formatP,

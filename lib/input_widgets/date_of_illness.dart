@@ -35,6 +35,13 @@ class DateOfIllnessState extends State<DateOfIllness> {
             onPressed: () {
               widget.onSubmitted(_controller.text); // Send value to parent
             },
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.lightBlue,
+                foregroundColor: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                textStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold)),
             child: const Text('eingeben'),
           ),
         ],

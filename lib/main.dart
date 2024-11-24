@@ -33,13 +33,13 @@ class MyApology extends StatelessWidget {
 
           // ···
           titleLarge: GoogleFonts.notoSans(
-            fontSize: 16,
+            fontSize: 20,
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w500,
             color: Colors.black,
           ),
           bodyMedium: GoogleFonts.notoSans(
-            fontSize: 14,
+            fontSize: 18,
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w400,
             color: Colors.blue,

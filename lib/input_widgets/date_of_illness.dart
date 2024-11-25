@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:date_picker_plus/date_picker_plus.dart';
 
 class DateOfIllness extends StatefulWidget {
-  final Function(String) onSubmitted; // Callback to parent
-
-  const DateOfIllness({required this.onSubmitted, super.key});
+  final Function(DateTimeRange) onSelected; // Callback to parent
+  const DateOfIllness({required this.onSelected, super.key});
 
   @override
   DateOfIllnessState createState() => DateOfIllnessState();
@@ -11,6 +11,7 @@ class DateOfIllness extends StatefulWidget {
 
 class DateOfIllnessState extends State<DateOfIllness> {
   final TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,28 +23,25 @@ class DateOfIllnessState extends State<DateOfIllness> {
             child: Text("Entschuldigungszeitraum",
                 style: Theme.of(context).textTheme.displayMedium!),
           ),
-          TextField(
-            style: Theme.of(context).textTheme.displayMedium!,
-            controller: _controller,
-            decoration: const InputDecoration(
-              labelText: '"für den ..." oder "für die Zeit von bis"',
-              border: OutlineInputBorder(),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: // Zeitraum
+                SizedBox(
+              width: 300,
+              height: 400,
+              child: RangeDatePicker(
+                centerLeadingDate: true,
+                minDate: DateTime(2024, 10, 10),
+                maxDate: DateTime(2025, 10, 30),
+                initialDate: DateTime(2024, 11),
+                onRangeSelected: widget.onSelected,
+                disabledCellsDecoration: const BoxDecoration(
+                  color: Colors.yellow,
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              widget.onSubmitted(_controller.text); // Send value to parent
-            },
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.lightBlue,
-                foregroundColor: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                textStyle: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold)),
-            child: const Text('eingeben'),
-          ),
         ],
       ),
     );

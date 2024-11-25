@@ -26,11 +26,9 @@ class MyApology extends StatelessWidget {
         useMaterial3: true,
         // Define the default brightness and colors.
 
-
         // Define the default `TextTheme`. Use this to specify the default
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: TextTheme(
-
           // ···
           titleLarge: GoogleFonts.notoSans(
             fontSize: 20,
@@ -45,10 +43,12 @@ class MyApology extends StatelessWidget {
             color: Colors.blue,
           ),
           bodySmall: GoogleFonts.notoSans(),
-          displayMedium: GoogleFonts.notoSans(fontSize: 16,
+          displayMedium: GoogleFonts.notoSans(
+            fontSize: 16,
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w400,
-            color: Colors.blue, ),
+            color: Colors.blue,
+          ),
         ),
       ),
       home: const StartingPage(title: 'Entschuldigung für die Schule'),
@@ -70,13 +70,16 @@ class _StartingPageState extends State<StartingPage> {
   String? selectedChild = "Tim Birkholz";
   String? appologyPeriode = "12.12.2023";
 
+  DateTimeRange daysOfAbsence = DateTimeRange(
+      start: DateTime.utc(2024, 11, 24), end: DateTime.utc(2024, 11, 25));
+
   @override
   Widget build(BuildContext context) {
     final Map<String, String> allElements = HashMap();
     allElements['parents'] = "Tanja Birkholz und Christian Buchsteiner";
     allElements['homeAdress'] = "Wacholderweg 15a, 61440 Oberursel";
     allElements['communication'] =
-    "Tel. 01516 144 80 98, mail: chrbuchsteiner@gmail.com";
+        "Tel. 01516 144 80 98, mail: chrbuchsteiner@gmail.com";
     allElements['schoolAdress'] = "Gymnasium Oberursel";
     allElements['teacher'] = "Frau Brendel";
 
@@ -84,16 +87,15 @@ class _StartingPageState extends State<StartingPage> {
     allElements['salutation'] = "Sehr geehrte";
     allElements['reasonTextPart1'] = "unser Sohn";
     allElements['reasonTextPart2'] =
-    "war krank und konnte nicht am Unterricht teilnehmen.";
+        "war krank und konnte nicht am Unterricht teilnehmen.";
     allElements['pleaseExcuse'] =
-    "Wir bitten Sie, sein Fehlen zu entschuldigen.";
+        "Wir bitten Sie, sein Fehlen zu entschuldigen.";
     allElements['endOfLetter'] = "Mit freundlichen Grüßen";
 
     allElements['appologyDate'] = appologyPeriode!;
     allElements['childName'] = selectedChild!;
 
     // logger.d(allElements);
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -103,12 +105,13 @@ class _StartingPageState extends State<StartingPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           DateOfIllness(
-            onSubmitted: (value) {
+            onSelected: (value) {
               setState(() {
-                appologyPeriode = value; // Update state with periode input
+                daysOfAbsence = value;
               });
             },
           ),
+          Text(daysOfAbsence.toString()),
           SelectChild(
             selectedValue: selectedChild,
             onChanged: (value) {
@@ -119,7 +122,6 @@ class _StartingPageState extends State<StartingPage> {
           ),
           FloatingActionButton(
             onPressed: () async {
-
               allElements['childName'] = selectedChild!;
 
               Navigator.of(context).push(

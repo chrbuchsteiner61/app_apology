@@ -10,7 +10,9 @@ class DateOfIllness extends StatefulWidget {
 }
 
 class DateOfIllnessState extends State<DateOfIllness> {
-  final TextEditingController _controller = TextEditingController();
+
+  DateTime today = DateTime.now();
+  int daysFromToday = 14;
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +33,12 @@ class DateOfIllnessState extends State<DateOfIllness> {
               height: 400,
               child: RangeDatePicker(
                 centerLeadingDate: true,
-                minDate: DateTime(2024, 10, 10),
-                maxDate: DateTime(2025, 10, 30),
-                initialDate: DateTime(2024, 11),
+                minDate: today.subtract(Duration(days: daysFromToday)),
+                maxDate: today.add(Duration(days: daysFromToday)),
+                initialDate: today,
                 onRangeSelected: widget.onSelected,
                 disabledCellsDecoration: const BoxDecoration(
-                  color: Colors.yellow,
+                  color: Colors.redAccent,
                 ),
               ),
             ),

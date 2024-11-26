@@ -105,7 +105,7 @@ class ApologyPage extends StatelessWidget {
                   alignment: pw.Alignment.centerLeft,
                   height: 18.0,
                   child: pw.Text(
-                    '${allElements['titleRow']!} ${allElements['appologyDate']!}',
+                    '${allElements['titleRow']!} ${allElements['absenceStart']!}',
                     style: formatB,
                   ),
                 ),

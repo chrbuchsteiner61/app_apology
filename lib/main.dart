@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:app_apology/input_widgets/date_of_illness.dart';
 import 'package:app_apology/apology_page.dart';
@@ -44,7 +45,7 @@ class MyApology extends StatelessWidget {
           ),
           bodySmall: GoogleFonts.notoSans(),
           displayMedium: GoogleFonts.notoSans(
-            fontSize: 16,
+            fontSize: 18,
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w400,
             color: Colors.blue,
@@ -68,10 +69,10 @@ class StartingPage extends StatefulWidget {
 class _StartingPageState extends State<StartingPage> {
   // State variable to hold the selected value
   String? selectedChild = "Tim Birkholz";
-  String? appologyPeriode = "12.12.2023";
-
-  DateTimeRange daysOfAbsence = DateTimeRange(
-      start: DateTime.utc(2024, 11, 24), end: DateTime.utc(2024, 11, 25));
+  DateTimeRange daysOfAbsence =
+      DateTimeRange(start: DateTime.now(), end: DateTime.now());
+  String absenceStart = DateFormat('dd.MM.yyyy').format(DateTime.now());
+  String absenceEnd = DateFormat('dd.MM.yyyy').format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +93,8 @@ class _StartingPageState extends State<StartingPage> {
         "Wir bitten Sie, sein Fehlen zu entschuldigen.";
     allElements['endOfLetter'] = "Mit freundlichen Grüßen";
 
-    allElements['appologyDate'] = appologyPeriode!;
+    allElements['absenceStart'] = absenceStart!;
+    allElements['absenceEnd'] = absenceEnd!;
     allElements['childName'] = selectedChild!;
 
     // logger.d(allElements);
@@ -108,10 +110,13 @@ class _StartingPageState extends State<StartingPage> {
             onSelected: (value) {
               setState(() {
                 daysOfAbsence = value;
+                absenceStart = DateFormat('dd.MM.yyyy').format(value.start);
+                absenceEnd = DateFormat('dd.MM.yyyy').format(value.end);
               });
             },
           ),
-          Text(daysOfAbsence.toString()),
+          Text(absenceStart),
+          Text(absenceEnd),
           SelectChild(
             selectedValue: selectedChild,
             onChanged: (value) {

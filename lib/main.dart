@@ -93,10 +93,10 @@ class _StartingPageState extends State<StartingPage> {
         "Wir bitten Sie, sein Fehlen zu entschuldigen.";
     allElements['endOfLetter'] = "Mit freundlichen Grüßen";
 
-    allElements['absenceStart'] = absenceStart!;
-    allElements['absenceEnd'] = absenceEnd!;
+    allElements['absenceStart'] = absenceStart;
+    allElements['absenceEnd'] = absenceEnd;
     allElements['childName'] = selectedChild!;
-
+ 
     // logger.d(allElements);
     return Scaffold(
       appBar: AppBar(
